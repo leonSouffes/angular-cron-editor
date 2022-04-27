@@ -1,6 +1,7 @@
 # AngularCronEditor
 
 This project is a cron generator for angular app. This component use Bootstrap 5 classes and is up for Angular 13+.
+[npm package](https://www.npmjs.com/package/ngx-cron-gen)
 
 ## Use
 
