@@ -1,24 +1,59 @@
-# CronEditor
+# AngularCronEditor
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+This project is a cron generator for angular app. This component use Bootstrap 5 classes and is up for Angular 13+.
+[npm package](https://www.npmjs.com/package/ngx-cron-gen)
 
-## Code scaffolding
+## Use
 
-Run `ng generate component component-name --project cron-editor` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project cron-editor`.
-> Note: Don't forget to add `--project cron-editor` or else it will be added to the default project in your `angular.json` file. 
+A code example is ready for you in (/src/app).
 
-## Build
+## Install
 
-Run `ng build cron-editor` to build the project. The build artifacts will be stored in the `dist/` directory.
+Use ```npm i ngx-cron-gen```
 
-## Publishing
+Import ```CronEditorModule``` in your ```app.module```.
 
-After building your library with `ng build cron-editor`, go to the dist folder `cd dist/cron-editor` and run `npm publish`.
+In your template
+```HTML
+<cron-editor [(cron)]="cronExpression" [disabled]="isCronDisabled" [options]="cronOptions"></cron-editor>
+```
 
-## Running unit tests
+In your component
+```ts
+import { Component } from '@angular/core';
+import { CronOptions } from 'cron-editor';
 
-Run `ng test cron-editor` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@Component({
+  selector: '...',
+  templateUrl: '...'
+})
+export class AppComponent{
+  public cronExpression = '0 12 1W 1/1 ?';
+  public isCronDisabled = false;
+  public cronOptions: CronOptions = {
+    formInputClass: 'form-control cron-editor-input',
+    formSelectClass: 'form-control cron-editor-select',
+    formRadioClass: 'cron-editor-radio',
+    formCheckboxClass: 'cron-editor-checkbox',
 
-## Further help
+    defaultTime: '10:00:00',
+    use24HourTime: true,
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    hideMinutesTab: true,
+    hideHourlyTab: false,
+    hideDailyTab: false,
+    hideWeeklyTab: false,
+    hideMonthlyTab: false,
+    hideYearlyTab: false,
+    hideAdvancedTab: true,
+
+    hideSeconds: true,
+    removeSeconds: true,
+    removeYears: true
+  };
+}
+```
+
+Use your equivalent of ```cronExpression``` for retreiving the value.
+
+If some display issues try to use bootstrap 5.
