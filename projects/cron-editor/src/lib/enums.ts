@@ -1,4 +1,4 @@
-export const Days = {
+export const Days: { [key: string]: string } = {
     'SUN': 'Sunday',
     'MON': 'Monday',
     'TUE': 'Tuesday',
@@ -8,7 +8,7 @@ export const Days = {
     'SAT': 'Saturday'
 };
 
-export const MonthWeeks = {
+export const MonthWeeks: { [key: string]: string } = {
     '#1': 'First',
     '#2': 'Second',
     '#3': 'Third',

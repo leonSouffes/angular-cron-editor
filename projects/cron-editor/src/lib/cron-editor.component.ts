@@ -10,8 +10,8 @@ import Utils from './Utils';
   styleUrls: ['./cron-editor.component.css']
 })
 export class CronEditorComponent implements OnInit, OnChanges {
-  @Input() public disabled: boolean;
-  @Input() public options: CronOptions;
+  @Input() public disabled!: boolean;
+  @Input() public options!: CronOptions;
 
   @Input() get cron(): string { return this.localCron; }
   set cron(value: string) {
@@ -22,12 +22,12 @@ export class CronEditorComponent implements OnInit, OnChanges {
   // the name is an Angular convention, @Input variable name + "Change" suffix
   @Output() cronChange = new EventEmitter();
 
-  public activeTab: string;
+  public activeTab!: string;
   public selectOptions = this.getSelectOptions();
   public state: any;
 
-  private localCron: string;
-  private isDirty: boolean;
+  private localCron!: string;
+  private isDirty!: boolean;
 
   public ngOnInit() {
     if (this.options.removeSeconds) {
@@ -57,7 +57,7 @@ export class CronEditorComponent implements OnInit, OnChanges {
     return Days[day];
   }
 
-  public monthWeekDisplay(monthWeekNumber: number): string {
+  public monthWeekDisplay(monthWeekNumber: string): string {
     return MonthWeeks[monthWeekNumber];
   }
 
@@ -135,7 +135,7 @@ export class CronEditorComponent implements OnInit, OnChanges {
         break;
       case 'weekly':
         const days = this.selectOptions.days
-          .reduce((acc, day) => this.state.weekly[day] ? acc.concat([day]) : acc, [])
+          .reduce((acc: string[], day: string) => this.state.weekly[day] ? acc.concat([day]) : acc, [])
           .join(',');
         this.cron = `${this.state.weekly.minutes} ${this.hourToCron(this.state.weekly.hours, this.state.weekly.hourType)} ? * ${days}`;
 

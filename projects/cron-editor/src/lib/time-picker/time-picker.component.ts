@@ -9,16 +9,16 @@ import Utils from '../Utils';
 })
 export class TimePickerComponent implements OnInit {
   @Output() public change = new EventEmitter();
-  @Input() public disabled: boolean;
+  @Input() public disabled!: boolean;
   @Input() public time: any;
-  @Input() public selectClass: string;
-  @Input() public use24HourTime: boolean;
-  @Input() public hideSeconds: boolean;
+  @Input() public selectClass!: string;
+  @Input() public use24HourTime!: boolean;
+  @Input() public hideSeconds!: boolean;
 
-  public hours: number[];
-  public minutes: number[];
-  public seconds: number[];
-  public hourTypes: string[];
+  public hours!: number[];
+  public minutes!: number[];
+  public seconds!: number[];
+  public hourTypes!: string[];
 
   public ngOnInit() {
     this.hours = this.use24HourTime ? Utils.getRange(0, 23) : Utils.getRange(0, 12);
